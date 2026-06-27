@@ -66,6 +66,8 @@ All countries / regions
 
 ## In-App Purchase
 
+### (v1.1 only — skip for v1.0 submission)
+
 ### Display Name (in App Store Connect)
 ```
 Remove Ads
@@ -129,7 +131,7 @@ HOW TO PLAY
 • Drag any of the 3 pieces from the bottom tray onto the 8×8 grid
 • Fill any entire row or column to clear it
 • Chain multi-line clears for combo bonuses (300 / 600 / 1000+ points)
-• When no piece fits, the game ends — but you can watch one ad to clear two rows and continue
+• When no piece fits, the game ends — tap RESTART to play again
 
 DESIGNED FOR CALM
 
@@ -141,13 +143,11 @@ ACCESSIBILITY
 • Crisp 24pt-equivalent typography with high contrast options (OLED Dark theme)
 • Sound and haptic feedback can both be disabled in Settings
 
-REMOVE ADS
-
-One-time $2.99 purchase removes all interstitial and rewarded ads forever. No subscription. No recurring charges.
-
 CONTACT
 
 brick-smash-support@example.com — we read every email.
+
+This v1.0 release is completely ad-free.
 ```
 
 字符数：约 1,700（限 4,000，留充足余地）
@@ -211,7 +211,7 @@ https://<your-github-username>.github.io/brick-smash-legal/
 | Gambling and Contests | **No** |
 | Made for Kids | **No** |
 
-**结果：17+**（因为含第三方广告 + ATT，自动 17+）
+**结果：4+（v1 ad-free）**（v1 无任何广告 / ATT / 第三方 SDK）
 
 ---
 
@@ -221,25 +221,19 @@ https://<your-github-username>.github.io/brick-smash-legal/
 
 ### Data Used to Track You
 
-✅ **Identifiers**
-- Device ID（iOS IDFA）—— 仅当用户 ATT 授权后
-- 数据通过：AppLovin、Pangle
-
-✅ **Usage Data**
-- Product Interaction
-- 数据通过：AppLovin、Pangle
+**None**
 
 ### Data Linked to You
 
-仅当用户授权 ATT 时：上述 Device ID + Usage Data
+**None**
 
 ### Data Not Linked to You
 
-无
+**None**
 
 ### Data Not Collected
 
-✅ Yes —— 我们自己不直接收集任何用户数据
+✅ **Yes** —— v1.0 不收集任何用户数据
 
 ---
 
@@ -281,15 +275,20 @@ Not required — the app has no login or account.
 直接 copy-paste 这段：
 
 ```
+v1.0 NOTE: This is an ad-free, single-purchase-free release. No third-party
+SDKs, no tracking, no IAP. A future v1.1 update will introduce optional
+ad-supported monetization. The current submission is simplified to focus
+on the gameplay innovations before adding monetization.
+
 Brick Smash is a single-player 8×8 block puzzle game.
 
-SIX DOCUMENTED DIFFERENTIATORS FROM EXISTING APPS IN THIS CATEGORY:
+FIVE DOCUMENTED DIFFERENTIATORS FROM EXISTING APPS IN THIS CATEGORY:
 
 1. Daily Seeded Challenge (visible in Screenshot #2)
    A globally synchronized daily piece sequence: every player worldwide receives identical pieces on the same UTC date. This is the primary differentiator from Block Blast (Hungry Studio), Cube Crush variants, and similar titles, which all use per-session random seeds. Implemented via DailySeedGenerator.swift using xorshift64 deterministic RNG seeded from yyyyMMdd UTC integer.
 
 2. Four-Theme Visual Engine (visible in Screenshot #3)
-   Classic, Neon, Pixel-Art, and OLED-Dark themes can be switched instantly with no purchase, login, or download. Most apps in this category lock themes behind subscription. Implementation: ThemeManager.swift (165 lines), no remote assets, all themes ship with v1.
+   Classic, Neon, Pixel-Art, and OLED-Dark themes can be switched instantly with no purchase, login, or download. Most apps in this category lock themes behind subscription. Implementation: ThemeManager.swift (165 lines), no remote assets, all themes ship with v1. Scores are also persisted strictly on-device (Top 20 per mode in UserDefaults — no Game Center, no social login, no server).
 
 3. Time Attack Mode (visible in Screenshot #4)
    Two timed variants — Sprint (60s) and Marathon (120s) — with independent leaderboards. The countdown creates a fundamentally different play feel from endless modes. Block Blast and clones are strictly endless until Game Over; no competitor in this category offers a pure time-attack mode. Implementation: GameMode.timeAttack(seconds:) + Task-based countdown timer in GameViewModel.swift. Auto-clears 1 random row if grid fills, so play continues until timer expires.
@@ -299,9 +298,6 @@ SIX DOCUMENTED DIFFERENTIATORS FROM EXISTING APPS IN THIS CATEGORY:
 
 5. Color Match Bonus
    When a cleared row or column contains 5+ cells of the same color, a +500 bonus is awarded on top of normal scoring. A "COLOR MATCH! +500" toast appears for 1.2 seconds. Adds strategic depth — players plan placements to align colors. Implementation: GridState.hasColorMatch(in:cols:) inspects pre-clear color array; GameRules.colorMatchBonus = 500.
-
-6. Strictly Local Leaderboard (visible in Screenshot #5)
-   Top 20 scores per mode (Normal / Daily / Sprint60 / Marathon120) stored only in UserDefaults. No Game Center, no social login, no server, no remote storage. This deliberately differs from competitors that require Apple Sign In or Facebook for any score persistence.
 
 INDEPENDENT WORK:
 - All source code is original SwiftUI, written specifically for this app.
@@ -313,21 +309,11 @@ INDEPENDENT WORK:
 NO THIRD-PARTY TRADEMARKS:
 The app name, metadata, screenshots, and in-app UI contain no third-party trademarks such as "Block Blast", "Tetris", "Cube Crush", or any other competitor brand.
 
-ADS & IAP:
-- AppLovin MAX SDK is integrated as ad mediation provider (Pangle as the primary ad source).
-- AppLovin SDK Key and Ad Unit IDs are read from Info.plist; replace YOUR_APPLOVIN_SDK_KEY placeholder before submitting to App Store.
-- Interstitial ads fire after every 3rd Game Over (rate-limited).
-- Rewarded ads fire only on user-initiated "Watch & Continue" tap.
-- One-time non-consumable IAP "Remove Ads" ($2.99) via StoreKit 2 — no subscriptions, no Toggle Paywall.
-
-ATT:
-Tracking permission is requested on the user's 3rd Game Over (not on launch) to maximize the chance the user has experienced the game value first.
-
 PRIVACY:
-No data is collected by us. Only ad networks may collect IDFA + ad interaction events, and only if the user grants ATT permission. Full disclosure in PrivacyInfo.xcprivacy bundled with the app.
+v1.0 collects no data and contains no third-party SDKs. PrivacyInfo.xcprivacy declares NSPrivacyTracking=false and an empty NSPrivacyCollectedDataTypes array.
 
 TESTED ON:
-iPhone 15 Pro / iPhone 17 Pro (iOS 17.0+ / iOS 26.x). Build via Xcode 26.2, Swift 5.9, AppLovin SDK 13.6.3.
+iPhone 15 Pro / iPhone 17 Pro (iOS 17.0+ / iOS 26.x). Build via Xcode 26.2, Swift 5.9.
 
 REVIEW STEPS:
 1. Launch the app — game starts immediately, no onboarding or login.
