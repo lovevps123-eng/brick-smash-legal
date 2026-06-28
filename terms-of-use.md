@@ -1,8 +1,8 @@
-# Terms of Use for Brick Smash
+# Terms of Use for Brick Smash 8x8
 
-**Effective Date:** June 16, 2026
+**Effective Date:** June 28, 2026
 
-By downloading, installing, or using Brick Smash ("the app"), you agree to these Terms of Use. If you do not agree, do not use the app.
+By downloading, installing, or using Brick Smash 8x8 ("Brick Smash", "the app"), you agree to these Terms of Use. If you do not agree, do not use the app.
 
 ---
 

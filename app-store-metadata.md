@@ -127,15 +127,20 @@ App Store Connect → 你的 App → 左侧 sidebar:
 
 ### Name (30 字符上限)
 ```
-Brick Smash
+Brick Smash 8x8
 ```
-（占 11 字符，留余地以后加副标题如 `Brick Smash 8x8` 等）
+（占 15 字符。原本想用 `Brick Smash` 但被占用，加 `8x8` 后缀绕过冲突，**且直接突出 8×8 玩法差异化**）
 
 ### Subtitle (30 字符上限)
 ```
-8×8 Puzzle · Daily Challenge
+Drop. Clear. Score.
 ```
-（占 28 字符）
+（占 19 字符。**注意**：因为 Name 已含 "8x8"，Subtitle **不要重复 "8×8"**。这个版本简洁有节奏感，与第 1 张截图的标语一致）
+
+#### 备选 Subtitle（如果想突出玩法关键词）
+- `Puzzle · Daily · Time Attack` (28 chars)
+- `Block Puzzle Daily Challenge` (28 chars)
+- `Relax with daily block puzzle` (29 chars)
 
 ### Primary Category
 ```

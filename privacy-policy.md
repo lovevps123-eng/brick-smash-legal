@@ -1,9 +1,9 @@
-# Privacy Policy for Brick Smash
+# Privacy Policy for Brick Smash 8x8
 
-**Effective Date:** June 16, 2026
-**Last Updated:** June 16, 2026
+**Effective Date:** June 28, 2026
+**Last Updated:** June 28, 2026
 
-This Privacy Policy describes how Brick Smash ("we", "us", "the app") handles information when you use our iOS application. We have designed Brick Smash to collect as little data as possible — most game data stays on your device.
+This Privacy Policy describes how Brick Smash 8x8 ("Brick Smash", "we", "us", "the app") handles information when you use our iOS application. We have designed Brick Smash to collect as little data as possible — most game data stays on your device.
 
 > **Version 1.0 Note**: This release of Brick Smash is **completely ad-free**.
 > No data is collected or shared with any third party. A future v1.1 release
