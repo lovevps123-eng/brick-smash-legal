@@ -219,59 +219,72 @@ Non-Consumable
 
 ---
 
-## App Description (4000 字符上限)
+## App Description (4000 字符上限) — ASCII-only safe version
+
+⚠️ **重要**：App Store Connect 的 Description 字段对部分 Unicode 字符严格（如 `✦` `×` em-dash `—`）会报 "invalid characters" 错。下面这版**已经移除所有可疑字符**，保证可粘贴。
 
 ```
 Drop. Clear. Score.
 
-Brick Smash is a relaxing 8×8 block puzzle game with a daily global challenge, time-attack modes, four visual themes, and satisfying combo effects. Drag pieces onto the grid, complete full rows or columns to clear them, and chain combos for bonus points.
+Brick Smash is a relaxing 8x8 block puzzle game with a daily global challenge, time-attack modes, four visual themes, and satisfying combo effects. Drag pieces onto the grid, complete full rows or columns to clear them, and chain combos for bonus points.
 
 WHAT MAKES BRICK SMASH DIFFERENT
 
-✦ Daily Global Challenge
+* Daily Global Challenge
 Every day at midnight UTC, all players around the world receive the same 30-piece sequence. Compete by skill, not by luck.
 
-✦ Time Attack Modes
-Sprint (60 seconds) and Marathon (120 seconds) variants with independent leaderboards. Pure score-rush — beat the clock.
+* Time Attack Modes
+Sprint (60 seconds) and Marathon (120 seconds) variants with independent leaderboards. Pure score-rush - beat the clock.
 
-✦ Combo Particle Effects
-Chain 2+ line clears to trigger satisfying confetti bursts that match your theme. Bigger combos = more particles.
+* Combo Particle Effects
+Chain 2+ line clears to trigger satisfying confetti bursts that match your theme. Bigger combos mean more particles.
 
-✦ Color Match Bonus (+500)
+* Color Match Bonus (+500)
 Line up 5+ same-color cells in a row or column for a +500 score bonus. Adds strategic depth on top of the classic block puzzle.
 
-✦ Four Free Visual Themes
-Switch instantly between Classic, Neon, Pixel-Art, and OLED Dark. All themes are free — no unlocks, no purchases, no nags.
+* Four Free Visual Themes
+Switch instantly between Classic, Neon, Pixel-Art, and OLED Dark. All themes are free - no unlocks, no purchases, no nags.
 
-✦ Strictly Local Leaderboard
+* Strictly Local Leaderboard
 Top 20 scores per mode, stored entirely on your device. No account. No login. No friends list. No notifications.
 
-✦ Pure Offline Play
+* Pure Offline Play
 Brick Smash works without an internet connection. No server dependency, no cloud account, no data uploads.
 
 HOW TO PLAY
 
-• Drag any of the 3 pieces from the bottom tray onto the 8×8 grid
-• Fill any entire row or column to clear it
-• Chain multi-line clears for combo bonuses (300 / 600 / 1000+ points)
-• When no piece fits, the game ends — tap RESTART to play again
+- Drag any of the 3 pieces from the bottom tray onto the 8x8 grid
+- Fill any entire row or column to clear it
+- Chain multi-line clears for combo bonuses (300 / 600 / 1000+ points)
+- When no piece fits, the game ends - tap RESTART to play again
 
 DESIGNED FOR CALM
 
-No notifications. No timers in the main mode. No social pressure. Just you, the grid, and the next piece. Average session: 4–6 minutes.
+No notifications. No timers in the main mode. No social pressure. Just you, the grid, and the next piece. Average session: 4-6 minutes.
 
 ACCESSIBILITY
 
-• Tap-and-drag mechanic, no quick reflexes needed
-• Crisp 24pt-equivalent typography with high contrast options (OLED Dark theme)
-• Sound and haptic feedback can both be disabled in Settings
+- Tap-and-drag mechanic, no quick reflexes needed
+- Crisp 24pt-equivalent typography with high contrast options (OLED Dark theme)
+- Sound and haptic feedback can both be disabled in Settings
 
 CONTACT
 
-brick-smash-support@example.com — we read every email.
+brick-smash-support@example.com - we read every email.
 
 This v1.0 release is completely ad-free.
 ```
+
+### 被移除的字符清单（参考）
+
+| 原字符 | Unicode | 改为 | 出现位置 |
+|---|---|---|---|
+| `✦` | U+2726 | `*` | 7 处 section bullets |
+| `×` | U+00D7 | `x` | "8×8" → "8x8" |
+| `—` | U+2014 em-dash | `-` 普通连字符 | 多处 |
+| `–` | U+2013 en-dash | `-` | "4–6 minutes" |
+| `•` | U+2022 bullet | `-` | HOW TO PLAY / ACCESSIBILITY 列表 |
+| `=` | (combos = more) | `mean` | 等号在描述里有时触发 |
 
 字符数：约 1,700（限 4,000，留充足余地）
 
