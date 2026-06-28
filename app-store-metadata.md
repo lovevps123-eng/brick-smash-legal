@@ -5,6 +5,124 @@
 
 ---
 
+## 0. Create New App 向导（**最先做这步**）
+
+登录 [App Store Connect](https://appstoreconnect.apple.com) → **Apps** → 右上角 **+** → 你会看到两个选项：
+
+| 选项 | 是否选 | 说明 |
+|---|---|---|
+| **New App** | ✅ **选这个** | 创建单个新 App |
+| **New App Bundle** | ❌ 不选 | 这是把**多个已上架 App** 打包销售用的（如 Pages + Numbers bundle），不是新 App 用 |
+
+点 **New App** 后弹出向导，**逐字段填写**：
+
+### 0.1 Platforms（必选）
+
+| 选项 | 是否勾选 | 说明 |
+|---|---|---|
+| ✅ **iOS** | **勾上** | 我们只做 iPhone |
+| ❌ macOS | 不勾 | Mac Catalyst 后续可选，但 v1 不上 |
+| ❌ tvOS | 不勾 | 不支持 Apple TV |
+| ❌ visionOS | 不勾 | 不支持 Vision Pro |
+
+⚠️ **平台一旦选定后不可移除**，但可以后续添加（v1.1 想上 Mac Catalyst 时再加 macOS 即可）。
+
+### 0.2 Name（30 字符上限）
+
+```
+Brick Smash
+```
+
+⚠️ 这个名字会显示在 App Store 商品页和 iPhone Home Screen 下方。建议**注册前先在 USPTO 商标搜索** [tmsearch.uspto.gov](https://tmsearch.uspto.gov) 查 "Brick Smash" 在 Class 9 / 41 是否已注册。我们之前查过 App Store 没有同名 App，但商标查没做。
+
+### 0.3 Primary Language（必选）
+
+```
+English (U.S.)
+```
+
+⚠️ 这是 App **默认元数据语言**，决定 fallback 显示。后续可以添加更多 localization（如 Simplified Chinese / Japanese），但 Primary 不可改。**推荐选 English (U.S.)** 因为：
+- 美区是主要市场
+- 全球都能 fallback 到英文
+- Apple 审核员母语
+
+### 0.4 Bundle ID（dropdown，从 Apple Developer 选）
+
+```
+com.masf.bricksmash
+```
+
+**前置条件**：必须先在 [Apple Developer → Identifiers](https://developer.apple.com/account/resources/identifiers/list) 创建 App ID。
+
+如果还没创建：
+1. 去 Apple Developer → Identifiers → **+**
+2. 选 **App IDs** → Continue
+3. 选 **App** → Continue
+4. 填表：
+   - **Description**: `Brick Smash`
+   - **Bundle ID**: 选 **Explicit**，填 `com.masf.bricksmash`
+   - **Capabilities**: 暂时**不勾任何**（v1 无 Push / iCloud / Apple Pay）
+5. Continue → Register
+
+回到 App Store Connect 向导，刷新 Bundle ID 下拉框就能选到 `com.masf.bricksmash`。
+
+⚠️ **Bundle ID 必须与 Xcode 工程的 PRODUCT_BUNDLE_IDENTIFIER 完全一致**（项目里现在是 `com.masf.bricksmash`）。
+
+### 0.5 SKU（内部编号，自己定）
+
+```
+bricksmash-001
+```
+
+- 仅用作你自己的内部追踪，**不显示给用户**
+- 不能包含空格 / 特殊字符（字母数字 + `-` + `_` 即可）
+- 一旦设置不可改，**但可以随意填**（强迫症推荐 `bricksmash-001` 方便以后做 SKU #2 矩阵化）
+
+### 0.6 User Access
+
+```
+Full Access
+```
+
+- **Full Access**：你（账号 owner）有完全权限
+- Limited Access：限制某些 team 成员（个人账号没必要）
+- 个人开发者**选 Full Access**
+
+### 0.7 完成创建
+
+点 **Create** → App 条目创建成功，进入 **App 详情页**。
+
+⚠️ **创建后不能改的字段**：Platforms、Bundle ID、SKU、Primary Language。
+
+**创建后可以改的字段**：Name、Subtitle、所有元数据（Description / Keywords / etc.）。
+
+---
+
+## 1. 创建后的进一步配置（按下面顺序填）
+
+下面所有内容是 App 创建**之后**，在 App Store Connect 的 App 详情页里填写的。导航：
+
+```
+App Store Connect → 你的 App → 左侧 sidebar:
+├─ Distribution
+│  ├─ App Store (你最常用)
+│  │  ├─ App Information      ← §1 + §2 下面
+│  │  ├─ Pricing & Availability ← §3
+│  │  ├─ App Privacy           ← §4 + Privacy Nutrition Labels
+│  │  └─ Version (1.0)
+│  │     ├─ Promotional Text
+│  │     ├─ Description
+│  │     ├─ Keywords
+│  │     ├─ Support URL
+│  │     ├─ Screenshots（6 张）
+│  │     ├─ App Review Information
+│  │     └─ Version Release（自动 / 手动）
+│  └─ TestFlight (内测，先跳过)
+└─ Monetization (v1 暂无 IAP，跳过)
+```
+
+---
+
 ## App Information
 
 ### Name (30 字符上限)
